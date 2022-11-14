@@ -3,7 +3,10 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeForm {
@@ -30,9 +33,9 @@ public class PracticeForm {
         $(".subjects-auto-complete__input").click();
         $("#subjectsInput").setValue("a");
         $("#react-select-2-option-2").click();
-        $("#hobbies-checkbox-2").parent().click();
-        $("#uploadPicture").click();
-        $("[id=uploadPicture]").uploadFile("src/test/picture/kote.jpg");
+        $x("//label[text()='Reading']").click(); //не смогла сделать через CSS
+        //$("#uploadPicture").click();
+        //$("[id=uploadPicture]").uploadFile(new File("src/picture/kote.jpg"));
         $("#currentAddress").setValue("Russia");
         $("#state").click();
         $(byText("NCR")).click();
@@ -41,13 +44,16 @@ public class PracticeForm {
         $("#submit").click();
         $("#example-modal-sizes-title-lg").shouldHave(Condition.text("Thanks for submitting the form"));
         $x("//td[text()='Lola Manola']");
-        $(".modal-content").shouldHave(Condition.text("email@domain.com"), Condition.text("Female")
-        , Condition.text("9998989789"));
-        //$x("//td[text()='18 June,1987']");
-       // $x("//td[text()='Arts']");
-       // $x("//td[text()='Reading']");
-       // $x("//td[text()='Russia']");
-       // $x("//td[text()='NCR Gurgaon']");
+        $(".modal-content").shouldHave(Condition.text("email@domain.com"));
+        /* "email@domain.com"
+                ("Female"),
+                ("9998989789"));
+         $x("//td[text()='18 June,1987']");
+         $x("//td[text()='Arts']");
+         $x("//td[text()='Reading']");
+         $x("//td[text()='Russia']");
+         $x("//td[text()='NCR Gurgaon']");
+        */
 
-            }
+    }
 }
