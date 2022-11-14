@@ -31,7 +31,8 @@ public class PracticeForm {
         $("#subjectsInput").setValue("a");
         $("#react-select-2-option-2").click();
         $("#hobbies-checkbox-2").parent().click();
-        //$("[id=uploadPicture]").uploadFile(new File("src/test/resources/HG.jpg"));
+        $("#uploadPicture").click();
+        $("[id=uploadPicture]").uploadFile("src/test/picture/kote.jpg");
         $("#currentAddress").setValue("Russia");
         $("#state").click();
         $(byText("NCR")).click();
@@ -40,10 +41,8 @@ public class PracticeForm {
         $("#submit").click();
         $("#example-modal-sizes-title-lg").shouldHave(Condition.text("Thanks for submitting the form"));
         $x("//td[text()='Lola Manola']");
-        $(".modal-content").shouldHave(Condition.text("email@domain.com"));
-        //$x("//td[text()='email@domain.com']");
-        //$x("//td[text()='Female']");
-        //$x("//td[text()='9998989789']");
+        $(".modal-content").shouldHave(Condition.text("email@domain.com"), Condition.text("Female")
+        , Condition.text("9998989789"));
         //$x("//td[text()='18 June,1987']");
        // $x("//td[text()='Arts']");
        // $x("//td[text()='Reading']");
