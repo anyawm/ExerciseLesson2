@@ -3,8 +3,8 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeForm {
 
@@ -21,16 +21,34 @@ public class PracticeForm {
         $("#firstName").setValue("Lola");
         $("#lastName").setValue("Manola");
         $("#userEmail").setValue("email@domain.com");
-        //$("#gender-radio-2").click(); не работает
+        $("#gender-radio-1").doubleClick();
         $("#userNumber").setValue("9998989789"); //10 цифр
-        //Date of Birth
-        //Subjects
-        //Hobbies
-        //Picture
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__year-select").selectOption("1987");
+        $(".react-datepicker__month-select").selectOption("June");
+        $(".react-datepicker__day--018").click();
+        $(".subjects-auto-complete__input").click();
+        $("#subjectsInput").setValue("a");
+        $("#react-select-2-option-2").click();
+        $("#hobbies-checkbox-2").parent().click();
+        //$("[id=uploadPicture]").uploadFile(new File("src/test/resources/HG.jpg"));
         $("#currentAddress").setValue("Russia");
-        //State and City
+        $("#state").click();
+        $(byText("NCR")).click();
+        $("#city").click();
+        $(byText("Gurgaon")).click();
+        $("#submit").click();
+        $("#example-modal-sizes-title-lg").shouldHave(Condition.text("Thanks for submitting the form"));
+        $x("//td[text()='Lola Manola']");
+        $(".modal-content").shouldHave(Condition.text("email@domain.com"));
+        //$x("//td[text()='email@domain.com']");
+        //$x("//td[text()='Female']");
+        //$x("//td[text()='9998989789']");
+        //$x("//td[text()='18 June,1987']");
+       // $x("//td[text()='Arts']");
+       // $x("//td[text()='Reading']");
+       // $x("//td[text()='Russia']");
+       // $x("//td[text()='NCR Gurgaon']");
 
-        //$("#output").shouldBe(Condition.visible); новое окно
-
-    }
+            }
 }
