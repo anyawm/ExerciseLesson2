@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeForm {
 
+
     @BeforeAll
     static void beforeAll() {
         Configuration.holdBrowserOpen = true;
@@ -20,6 +21,10 @@ public class PracticeForm {
 
     void fillFormTest() {
         open("https://demoqa.com/automation-practice-form");
+
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
+
         $("#firstName").setValue("Lola");
         $("#lastName").setValue("Manola");
         $("#userEmail").setValue("email@domain.com");
