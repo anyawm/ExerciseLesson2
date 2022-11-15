@@ -29,7 +29,7 @@ public class PracticeForm {
         $("#lastName").setValue("Manola");
         $("#userEmail").setValue("email@domain.com");
         $("#gender-radio-2").doubleClick();
-        $("#userNumber").setValue("9998989789"); //10 цифр
+        $("#userNumber").setValue("9998989789");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption("1987");
         $(".react-datepicker__month-select").selectOption("June");
@@ -46,6 +46,8 @@ public class PracticeForm {
         $("#city").click();
         $(byText("Gurgaon")).click();
         $("#submit").click();
+
+
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         //$x("//td[text()='Lola Manola']");
         $(".table-responsive").shouldHave(text("email@domain.com")
