@@ -12,9 +12,9 @@ public class PracticeForm {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.holdBrowserOpen = true; //чтобы браузер не закрывался
-        Configuration.browserSize = "1920x1080"; // браузер определенного размера
-        Configuration.baseUrl = "https://demoqa.com"; //?
+        Configuration.holdBrowserOpen = true;
+        Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = "https://demoqa.com";
     }
     @Test
 
@@ -23,7 +23,7 @@ public class PracticeForm {
         $("#firstName").setValue("Lola");
         $("#lastName").setValue("Manola");
         $("#userEmail").setValue("email@domain.com");
-        $("#gender-radio-1").doubleClick();
+        $("#gender-radio-2").doubleClick();
         $("#userNumber").setValue("9998989789"); //10 цифр
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption("1987");
@@ -43,16 +43,14 @@ public class PracticeForm {
         $("#submit").click();
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         //$x("//td[text()='Lola Manola']");
-        $(".table-responsive").shouldHave(text("email@domain.com"));
-        //$(".table-responsive").shouldHave(text("Female"));
-        //, text("Female"));
-        //text("9998989789"),
-                //text("18 June,1987"),
-                //text("Arts"),
-               // text("kote.jpg"),
-               // text("Russia"),
-               // text("NCR Gurgaon")
-              //  );
-
+        $(".table-responsive").shouldHave(text("email@domain.com")
+        ,text("Female")
+        ,text("9998989789")
+        ,text("18 June,1987")
+        ,text("Arts")
+        ,text("Picture")
+        ,text("Russia")
+        ,text("NCR Gurgaon")
+        );
     }
 }
