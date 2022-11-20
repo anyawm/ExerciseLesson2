@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -8,6 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
+    CalendarComponent calendarComponent = new CalendarComponent();
     private final String titlepage = "Student Registration Form";
     private SelenideElement
             lastNameInput = $("#lastName"), //чтобы менять только в одном месте, если изменится написание элемента на странице
@@ -55,6 +57,13 @@ public class RegistrationPage {
 
     public RegistrationPage setPhone(String value) {
         $("#userNumber").setValue(value);
+
+        return this;
+    }
+
+    public RegistrationPage setBirthDay(String day, String month, String year) {
+        $("#dateOfBirthInput").click();
+        calendarComponent.setDate(day, month, year);
 
         return this;
     }

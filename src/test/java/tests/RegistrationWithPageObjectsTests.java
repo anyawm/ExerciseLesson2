@@ -18,12 +18,9 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setLastName("Егоров")
                 .setLastName("alex@egorov.com")
                 .setGender("Other")
-                .setPhone("1234567890");
+                .setPhone("1234567890")
+                .setBirthDay(day: "30", month: "July", year: "2008");
 
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("July");
-        $(".react-datepicker__year-select").selectOption("2008");
-        $(".react-datepicker__day--030:not(.react-datepicker__day--outside-month)").click(); //если в зоне видимости две одинаковые даты разных месяцев
         $("#subjectsInput").setValue("Math").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("img/1.png");
