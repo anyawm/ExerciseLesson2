@@ -1,3 +1,5 @@
+package examples;
+
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
@@ -26,14 +28,15 @@ import static com.codeborne.selenide.Selenide.*;
             $x("//label[text()='Male']").click();
             $x("//input[@id='userNumber']").setValue("8505555555");
             $x("//input[@id='dateOfBirthInput']").click();
-            $x("//select[@class='react-datepicker__month-select']").selectOption("February");
+            $x("//select[@class='react-datepicker__month-select']").selectOption("June");
             $x("//select[@class='react-datepicker__year-select']").selectOption("1988");
-            $x("//div[@aria-label='Choose Monday, February 29th, 1988']").click();
-            $x("//input[@id='subjectsInput']").setValue("subjects");
+            //$x("//div[@aria-label='Choose Monday, February 29th, 1988']").click();
+            $x("//*[@class='react-datepicker__day--030'][not(contains(@class, 'react-datepicker__day--outside-month'))]").click();
+            $x("//input[@id='subjectsInput']").setValue("subjects"); // это не работает
             $x("//label[text()='Sports']").click();
             $x("//label[text()='Reading']").click();
             $x("//label[text()='Music']").click();
-            $x("//input[@id='uploadPicture']").uploadFile(new File("src/test/resources/kote.jpeg"));
+            $x("//input[@id='uploadPicture']").uploadFile(new File("src/test/resources/kote.jpg"));
             $x("//textarea[@id='currentAddress']").setValue("Moscow, lenina st 25");
             executeJavaScript("$('footer').remove()");
             executeJavaScript("$('#fixedban').remove()");
@@ -51,7 +54,7 @@ import static com.codeborne.selenide.Selenide.*;
                             "Student Email Drago@gmail.com\n" +
                             "Gender Male\n" +
                             "Mobile 8505555555\n" +
-                            "Date of Birth 29 February,1988\n" +
+                            "Date of Birth 30 June,1988\n" +
                             "Subjects\n" +
                             "Hobbies Sports, Reading, Music\n" +
                             "Picture kote.jpeg\n" +
