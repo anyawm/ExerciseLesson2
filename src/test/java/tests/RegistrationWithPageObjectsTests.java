@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -19,7 +18,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setLastName("alex@egorov.com")
                 .setGender("Other")
                 .setPhone("1234567890")
-                .setBirthDay(day: "30", month: "July", year: "2008");
+                .setBirthDay( "30", "July", "2008");
 
         $("#subjectsInput").setValue("Math").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
@@ -31,10 +30,11 @@ public class RegistrationWithPageObjectsTests extends TestBase {
         $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").click();
 
-        $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text(userName), text("Egorov"),
-                text("alex@egorov.com"), text("1234567890"));
+        registrationPage.registrationResultsModalAppears()
+                .verifyResults("Student name", userName + " Egorov")
+                .verifyResults("Student email", "alex@egorov.com")
+                .verifyResults("Gender", "Other")
+                .verifyResults("Mobile", "1234567890");
     }
 
     @Test

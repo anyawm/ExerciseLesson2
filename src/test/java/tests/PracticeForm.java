@@ -59,10 +59,8 @@ public class PracticeForm {
         $("#stateCity-wrapper").$(byText("Gurgaon")).click();
         $("#submit").click();
 
-        $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        //$x("//td[text()='Lola Manola']");
-        $(".table-responsive").shouldHave(text("email@domain.com")
+
+         $(".table-responsive").shouldHave(text("email@domain.com")
         ,text("Female")
         ,text("9998989789")
         ,text("30 June,1987")
