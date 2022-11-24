@@ -2,7 +2,9 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.PictureComponent;
 import pages.components.RegistrationResultsModal;
+import pages.components.StateChoose;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -12,6 +14,8 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     RegistrationResultsModal RegistrationResultsModal = new RegistrationResultsModal();
+    StateChoose StateChoose = new StateChoose();
+    PictureComponent PictureComponent = new PictureComponent();
     private final String titlepage = "Student Registration Form";
     private SelenideElement
             lastNameInput = $("#lastName"), //чтобы менять только в одном месте, если изменится написание элемента на странице
@@ -81,4 +85,47 @@ public class RegistrationPage {
 
         return this;
     }
+
+    public RegistrationPage setAddress(String value) {
+        $("#currentAddress").setValue(value);
+
+        return this;
+    }
+
+    public RegistrationPage setSubject(String value) {
+        $("#subjectsInput").setValue(value).pressEnter();
+
+        return this;
+    }
+
+    public RegistrationPage submitButton() {
+        $("#submit").click();
+
+        return this;
+    }
+
+    public RegistrationPage setHobbies(String value) {
+        $("#hobbiesWrapper").$(byText(value)).click();
+
+        return this;
+    }
+
+    public RegistrationPage setState (String value) {
+        StateChoose.setState(value);
+
+        return this;
+    }
+
+    public RegistrationPage setCity (String value) {
+        StateChoose.setCity(value);
+
+        return this;
+    }
+
+    public RegistrationPage setPhoto (String picture) {
+        PictureComponent.loadPhoto(picture);
+
+        return this;
+    }
+
 }
