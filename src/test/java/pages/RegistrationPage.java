@@ -13,14 +13,14 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
-    RegistrationResultsModal RegistrationResultsModal = new RegistrationResultsModal();
-    StateChoose StateChoose = new StateChoose();
-    PictureComponent PictureComponent = new PictureComponent();
+    RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
+    StateChoose stateChoose = new StateChoose();
+    PictureComponent pictureComponent = new PictureComponent();
     private final String titlepage = "Student Registration Form";
     private SelenideElement
             lastNameInput = $("#lastName"), //чтобы менять только в одном месте, если изменится написание элемента на странице
             firstNameInput = $("#firstName"),
-            eMailInput = $("#userEmail");
+            emailInput = $("#userEmail");
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -50,7 +50,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setEmail(String value) {
-        eMailInput.setValue(value);
+        emailInput.setValue(value);
 
         return this;
     }
@@ -75,13 +75,13 @@ public class RegistrationPage {
     }
 
     public RegistrationPage registrationResultsModalAppears () {
-        RegistrationResultsModal.verifyModalAppears();
+        registrationResultsModal.verifyModalAppears();
 
         return this;
     }
 
     public RegistrationPage verifyResults (String key, String value) {
-        RegistrationResultsModal.verifyResult(key, value);
+        registrationResultsModal.verifyResult(key, value);
 
         return this;
     }
@@ -111,19 +111,19 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setState (String value) {
-        StateChoose.setState(value);
+        stateChoose.setState(value);
 
         return this;
     }
 
     public RegistrationPage setCity (String value) {
-        StateChoose.setCity(value);
+        stateChoose.setCity(value);
 
         return this;
     }
 
     public RegistrationPage setPhoto (String picture) {
-        PictureComponent.loadPhoto(picture);
+        pictureComponent.loadPhoto(picture);
 
         return this;
     }

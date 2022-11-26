@@ -4,6 +4,8 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.text;
+
 
 public class RegistrationWithPageObjectsTests extends TestBase {
 
@@ -35,7 +37,13 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .verifyResults("Student name", userName + " Egorov")
                 .verifyResults("Student email", "alex@egorov.com")
                 .verifyResults("Gender", "Other")
-                .verifyResults("Mobile", "1234567890");
+                .verifyResults("Mobile", "1234567890")
+                .verifyResults("Date of Birth", "30 July,2008")
+                .verifyResults("Subjects", "Maths")
+                .verifyResults("Hobbies", "Sports")
+                .verifyResults("Picture", "kote.jpg")
+                .verifyResults("Address", "Some address 1")
+                .verifyResults("State and City", "NCR Delhi");
     }
 
    // @Test
