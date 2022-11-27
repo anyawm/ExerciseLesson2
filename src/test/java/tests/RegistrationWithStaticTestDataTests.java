@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static tests.TestData.*;
 
-public class RegistrationWithTestDataTests extends TestBase {
+public class RegistrationWithStaticTestDataTests extends TestBase {
 
  //    String userName = "Alex";
  //   String userSurname = "Egorov";
