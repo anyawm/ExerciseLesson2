@@ -55,18 +55,3 @@ public class RegistrationWithPOAndFakerTests extends TestBase {
     }
 }
 
-   // @Test
-   // void successfulRegistrationTestVer0() {
-       // String userName = "Alex";
-
-       // registrationPage.openPage();
-
-       // registrationPage.setFirstName(userName);
-       // registrationPage.setLastName("Егоров");
-       // registrationPage.setLastName("alex@egorov.com");
-      //  registrationPage.setGender("Other");
-      //  registrationPage.setPhone("1234567890");
-
-     //   $("#dateOfBirthInput").click();
-// ...
-   // }
