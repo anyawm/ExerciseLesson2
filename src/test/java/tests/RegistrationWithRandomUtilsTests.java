@@ -4,43 +4,23 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.RandomUtils;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static tests.TestData.*;
+import static utils.RandomUtils.*;
+//import static tests.TestData.*;
 
-public class RegistrationWithJavaTestDataTests extends TestBase {
-
- //    String userName = "Alex";
- //   String userSurname = "Egorov";
- //   String userEmail = "alex@egorov.com";
-
-    //String userName = "Alex",
-    //       userSurname = "Egorov",
-    //      userEmail = "alex@egorov.com";
-
-/*    static String userName,
-            userSurname,
-            userEmail;*/
-
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-    }
-
-    @BeforeEach
-    //static void beforeEach () {
-    //    userName = getNewUserName();
-    //    userSurname = getNewUserSurname();
-    //   userEmail = getNewUserEmail();
-    //}
+public class RegistrationWithRandomUtilsTests extends TestBase { //наследуем TestBase
 
     @Test
     void successfulRegistrationTest() {
-       // String userName = "Alex";
+       String userName = randomString(5);
+       String lastName = randomString(10);
+       String userEmail = randomEmail(10);
+       String userNumber = randomPhone("+7", 1111111111L, 9999999999L);
 
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
@@ -48,10 +28,10 @@ public class RegistrationWithJavaTestDataTests extends TestBase {
         executeJavaScript("$('footer').remove()"); //удаление футера
 
         $("#firstName").setValue(userName);
-        $("#lastName").setValue(userSurname);
+        $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
         $("#genterWrapper").$(byText("Other")).click(); // best
-        $("#userNumber").setValue("1234567890");
+        $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("July");
         $(".react-datepicker__year-select").selectOption("2008");
@@ -71,4 +51,5 @@ public class RegistrationWithJavaTestDataTests extends TestBase {
         $(".table-responsive").shouldHave(text(userName), text("Egorov"),
                 text("alex@egorov.com"), text("1234567890"));
     }
+
 }
