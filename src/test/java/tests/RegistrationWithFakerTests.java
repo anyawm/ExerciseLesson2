@@ -9,15 +9,13 @@ import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static utils.RandomUtils.*;
-//import static tests.TestData.*;
 
-public class RegistrationWithFakerTests extends TestBase { //наследуем TestBase
+
+public class RegistrationWithFakerTests extends TestBase {
 
     @Test
     void successfulRegistrationTest() {
         Faker faker = new Faker(new Locale("ru"));
-
 
        String userName = faker.name().firstName();
        String lastName = faker.name().lastName();
@@ -28,8 +26,6 @@ public class RegistrationWithFakerTests extends TestBase { //наследуем 
 
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        executeJavaScript("$('#fixedban').remove()"); //удаление конкретной рекламы
-        executeJavaScript("$('footer').remove()"); //удаление футера
 
         $("#firstName").setValue(userName);
         $("#lastName").setValue(lastName);

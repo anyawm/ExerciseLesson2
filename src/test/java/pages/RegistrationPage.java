@@ -1,10 +1,13 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import com.github.javafaker.Faker;
 import pages.components.CalendarComponent;
 import pages.components.PictureComponent;
 import pages.components.RegistrationResultsModal;
 import pages.components.StateChoose;
+
+import java.util.Locale;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -12,6 +15,8 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
+
+    Faker faker = new Faker(new Locale("fr"));
     CalendarComponent calendarComponent = new CalendarComponent();
     RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
     StateChoose stateChoose = new StateChoose();
@@ -74,13 +79,13 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage registrationResultsModalAppears () {
+    public RegistrationPage registrationResultsModalAppears() {
         registrationResultsModal.verifyModalAppears();
 
         return this;
     }
 
-    public RegistrationPage verifyResults (String key, String value) {
+    public RegistrationPage verifyResults(String key, String value) {
         registrationResultsModal.verifyResult(key, value);
 
         return this;
@@ -110,22 +115,23 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setState (String value) {
+    public RegistrationPage setState(String value) {
         stateChoose.setState(value);
 
         return this;
     }
 
-    public RegistrationPage setCity (String value) {
+    public RegistrationPage setCity(String value) {
         stateChoose.setCity(value);
 
         return this;
     }
 
-    public RegistrationPage setPhoto (String picture) {
+    public RegistrationPage setPhoto(String picture) {
         pictureComponent.loadPhoto(picture);
 
         return this;
     }
-
 }
+
+
