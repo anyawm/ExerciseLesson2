@@ -1,22 +1,14 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
+import com.github.javafaker.Faker;
+import org.junit.jupiter.api.Test;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 
 public class RegistrationWithPOAndFakerTests extends TestBase {
 
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.holdBrowserOpen = true;
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-    }
 
     @Test
     void successfulRegistrationTest() {
